@@ -262,6 +262,77 @@ cc_library(
 )
 
 # ---------------------------------------------------------------------------
+# Jobserver (GNU make -j token pool) implementation.
+cc_library(
+    name = "jobserver",
+    srcs = [
+        "jobserver.cc",
+        "jobserver-posix.cc",
+    ],
+    hdrs = ["jobserver.h"],
+    deps = [
+        ":util",
+        ":metrics",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
+
+# ---------------------------------------------------------------------------
+# Subprocess implementation (POSIX variant).
+cc_library(
+    name = "subprocess",
+    srcs = ["subprocess-posix.cc"],
+    hdrs = ["subprocess.h"],
+    deps = [
+        ":util",
+        ":metrics",
+        ":timestamp_hdr",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
+
+# ---------------------------------------------------------------------------
+# Disk interface implementation (filesystem helpers).
+cc_library(
+    name = "disk_interface",
+    srcs = ["disk_interface.cc"],
+    hdrs = ["disk_interface.h"],
+    deps = [
+        ":util",
+        ":metrics",
+        ":timestamp_hdr",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
+
+# ---------------------------------------------------------------------------
+# Command-runner abstraction (header only).
+cc_library(
+    name = "command_runner_hdr",
+    hdrs = ["command_runner.h"],
+    visibility = ["//visibility:public"],
+)
+
+# ---------------------------------------------------------------------------
+# Real command runner (spawns build commands).
+cc_library(
+    name = "real_command_runner",
+    srcs = ["real_command_runner.cc"],
+    hdrs = ["real_command_runner.h"],
+    deps = [
+        ":subprocess",
+        ":util",
+        ":metrics",
+        ":command_runner_hdr",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
+
+# ---------------------------------------------------------------------------
 # Debug-flags implementation (depends on graph).
 cc_library(
     name = "debug_flags",
