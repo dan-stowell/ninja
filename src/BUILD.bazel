@@ -18,7 +18,7 @@ cc_library(
 cc_library(
     name = "disk_interface",
     srcs = ["disk_interface.cc"],
-    hdrs = ["disk_interface.h", "timestamp.h"],
+    hdrs = ["disk_interface.h", "timestamp.h", "metrics.h", "util.h"],
     visibility = ["//visibility:public"],
 )
 
