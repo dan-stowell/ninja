@@ -1,0 +1,8 @@
+# First Bazel package: builds the independent elide_middle library.
+cc_library(
+    name = "elide_middle",
+    srcs = ["elide_middle.cc"],
+    hdrs = ["elide_middle.h"],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
