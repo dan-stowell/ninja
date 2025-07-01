@@ -204,6 +204,28 @@ cc_library(
     copts = ["-std=c++11"],
 )
 
+# ---------------------------------------------------------------------------
+# Parser for .ninja manifest files (reads build.ninja, includes, …).
+cc_library(
+    name = "manifest_parser",
+    srcs = ["manifest_parser.cc"],
+    hdrs = ["manifest_parser.h"],
+    deps = [
+        ":state",
+        ":parser",
+        ":depfile_parser",
+        ":eval_env",
+        ":util",
+        ":metrics",
+        ":hash_map",
+        ":load_status",
+        ":debug_flags_hdr",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
+
+# ---------------------------------------------------------------------------
 # Debug-flags implementation (depends on graph).
 cc_library(
     name = "debug_flags",
