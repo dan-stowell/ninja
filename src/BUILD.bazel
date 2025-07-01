@@ -186,6 +186,24 @@ cc_library(
     copts = ["-std=c++11"],
 )
 
+# ---------------------------------------------------------------------------
+# Global build state (nodes, edges, etc.).
+cc_library(
+    name = "state",
+    srcs = ["state.cc"],
+    hdrs = ["state.h"],
+    deps = [
+        ":graph",
+        ":util",
+        ":metrics",
+        ":hash_map",
+        ":eval_env",
+        ":timestamp_hdr",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
+
 # Debug-flags implementation (depends on graph).
 cc_library(
     name = "debug_flags",
