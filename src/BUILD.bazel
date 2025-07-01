@@ -79,10 +79,18 @@ cc_library(
     visibility = ["//visibility:public"],
 )
 
+# Header-only timestamp type.
+cc_library(
+    name = "timestamp_hdr",
+    hdrs = ["timestamp.h"],
+    visibility = ["//visibility:public"],
+)
+
 # Header-only disk interface definition.
 cc_library(
     name = "disk_interface_hdr",
     hdrs = ["disk_interface.h"],
+    deps = [":timestamp_hdr"],
     visibility = ["//visibility:public"],
 )
 
