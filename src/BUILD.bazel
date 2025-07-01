@@ -7,6 +7,23 @@ cc_library(
     copts = ["-std=c++11"],
 )
 
+# ---------------------------------------------------------------------------
+# Ninja file parser built on top of the lexer.
+cc_library(
+    name = "parser",
+    srcs = ["parser.cc"],
+    hdrs = ["parser.h"],
+    deps = [
+        ":lexer",
+        ":metrics",
+        ":disk_interface_hdr",
+        ":util",
+        ":parser_hdr",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
+
 # Environment variable evaluation utilities.
 cc_library(
     name = "eval_env",
