@@ -210,3 +210,44 @@ cc_library(
     ],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "parser",
+    srcs = ["parser.cc"],
+    hdrs = ["parser.h"],
+    deps = [
+        ":disk_interface",
+        ":lexer",
+        ":metrics",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "includes_normalize",
+    srcs = select({
+        "@bazel_tools//src/conditions:windows": ["includes_normalize-win32.cc"],
+        "//conditions:default": [],
+    }),
+    hdrs = ["includes_normalize.h"],
+    deps = [
+        ":string_piece",
+        ":string_piece_util",
+        ":util",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "clparser",
+    srcs = ["clparser.cc"],
+    hdrs = ["clparser.h"],
+    deps = [
+        ":includes_normalize",
+        ":metrics",
+        ":string_piece",
+        ":string_piece_util",
+        ":util",
+    ],
+    visibility = ["//visibility:public"],
+)
