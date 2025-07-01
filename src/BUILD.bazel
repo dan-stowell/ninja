@@ -42,3 +42,30 @@ cc_library(
     hdrs = ["json.h"],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "exit_status",
+    hdrs = ["exit_status.h"],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "load_status",
+    hdrs = ["load_status.h"],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "timestamp",
+    hdrs = [
+        "timestamp.h",
+        "win32port.h",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "explanations",
+    hdrs = ["explanations.h"],
+    visibility = ["//visibility:public"],
+)
