@@ -36,8 +36,16 @@ cc_library(
     visibility = ["//visibility:public"],
 )
 
+# Parser library to expose parser.h.
+cc_library(
+    name = "parser",
+    srcs = ["parser.cc"],
+    hdrs = ["parser.h"],
+    visibility = ["//visibility:public"],
+)
+
 cc_test(
     name = "elide_middle_test",
     srcs = ["elide_middle_test.cc"],
-    deps = [":elide_middle", ":test_support", ":disk_interface", ":manifest_parser", "@googletest//:gtest_main"],
+    deps = [":elide_middle", ":test_support", ":disk_interface", ":manifest_parser", ":parser", "@googletest//:gtest_main"],
 )
