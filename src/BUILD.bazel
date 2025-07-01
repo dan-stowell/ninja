@@ -8,6 +8,39 @@ cc_library(
 )
 
 # ---------------------------------------------------------------------------
+# Terminal line-printer utility.
+cc_library(
+    name = "line_printer",
+    srcs = ["line_printer.cc"],
+    hdrs = ["line_printer.h"],
+    deps = [
+        ":util",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
+
+# ---------------------------------------------------------------------------
+# Build-status printer.
+cc_library(
+    name = "status_printer",
+    srcs = ["status_printer.cc"],
+    hdrs = [
+        "status_printer.h",
+        "build.h",
+    ],
+    deps = [
+        ":graph",
+        ":util",
+        ":metrics",
+        ":line_printer",
+        ":exit_status_hdr",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
+
+# ---------------------------------------------------------------------------
 # Dependency file log (.ninja_deps) handling.
 cc_library(
     name = "deps_log",
