@@ -4,5 +4,5 @@ py_binary(
     name = "browse",
     srcs = ["browse.py"],
     main = "browse.py",
-    # No external deps
+    deps = ["//misc:ninja_syntax"],
 )
