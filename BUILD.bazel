@@ -1,0 +1,7 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+cc_library(
+    name = "string_piece",
+    hdrs = ["src/string_piece.h"],
+    visibility = ["//visibility:public"],
+)
