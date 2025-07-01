@@ -8,6 +8,20 @@ cc_library(
 )
 
 # ---------------------------------------------------------------------------
+# re2c-generated lexer used by the Ninja parser.
+cc_library(
+    name = "lexer",
+    srcs = ["lexer.cc"],
+    hdrs = ["lexer.h"],
+    deps = [
+        ":util",
+        ":string_piece",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
+
+# ---------------------------------------------------------------------------
 # Debug-flags header (header-only, used by graph and others).
 cc_library(
     name = "debug_flags_hdr",
