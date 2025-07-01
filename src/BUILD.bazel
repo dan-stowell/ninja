@@ -272,3 +272,60 @@ cc_library(
     deps = [":util"],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "graph",
+    srcs = [
+        "build.cc",
+        "build_log.cc",
+        "debug_flags.cc",
+        "deps_log.cc",
+        "dyndep.cc",
+        "dyndep_parser.cc",
+        "graph.cc",
+        "manifest_parser.cc",
+        "state.cc",
+    ],
+    hdrs = [
+        "build.h",
+        "build_log.h",
+        "debug_flags.h",
+        "deps_log.h",
+        "dyndep.h",
+        "dyndep_parser.h",
+        "graph.h",
+        "manifest_parser.h",
+        "state.h",
+    ],
+    deps = [
+        ":clparser",
+        ":depfile_parser",
+        ":disk_interface",
+        ":edit_distance",
+        ":eval_env",
+        ":exit_status",
+        ":explanations",
+        ":hash_map",
+        ":jobserver",
+        ":load_status",
+        ":metrics",
+        ":parser",
+        ":status",
+        ":timestamp",
+        ":util",
+        ":version",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "clean",
+    srcs = ["clean.cc"],
+    hdrs = ["clean.h"],
+    deps = [
+        ":disk_interface",
+        ":graph",
+        ":util",
+    ],
+    visibility = ["//visibility:public"],
+)
