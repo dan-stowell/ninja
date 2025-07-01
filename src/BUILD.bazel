@@ -377,20 +377,19 @@ cc_library(
 )
 
 genrule(
-    name = "browse_py_h_gen",
-    srcs = [
-        "browse.py",
-        "inline.sh",
-    ],
+    name = "browse_py_h",
+    srcs = ["browse.py"],
+    tools = ["inline.sh"],
     outs = ["build/browse_py.h"],
-    cmd = "mkdir -p $(@D) && $(location inline.sh) kBrowsePy < $(location browse.py) > $@",
+    cmd = "$(location inline.sh) kBrowsePy < $(location browse.py) > $@",
+    visibility = ["//visibility:public"],
 )
 
 cc_library(
     name = "browse",
     srcs = ["browse.cc"],
     hdrs = ["browse.h"],
-    deps = [":browse_py_h_gen"],
+    deps = [":browse_py_h"],
     visibility = ["//visibility:public"],
 )
 
