@@ -21,3 +21,10 @@ cc_library(
     deps = [":string_piece"],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "elide_middle",
+    srcs = ["elide_middle.cc"],
+    hdrs = ["elide_middle.h"],
+    visibility = ["//visibility:public"],
+)
