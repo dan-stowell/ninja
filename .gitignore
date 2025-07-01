@@ -48,3 +48,5 @@
 # Visual Studio files
 /.vs/
 /out/
+.aider*
+bazel-*
