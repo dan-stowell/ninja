@@ -376,6 +376,35 @@ cc_library(
     visibility = ["//visibility:public"],
 )
 
+cc_library(
+    name = "libninja",
+    deps = [
+        ":clean",
+        ":clparser",
+        ":command_collector",
+        ":depfile_parser",
+        ":disk_interface",
+        ":edit_distance",
+        ":elide_middle",
+        ":explanations",
+        ":getopt",
+        ":graph",
+        ":graphviz",
+        ":includes_normalize",
+        ":jobserver",
+        ":json",
+        ":lexer",
+        ":minidump",
+        ":missing_deps",
+        ":msvc_helper",
+        ":status_printer",
+        ":string_piece_util",
+        ":subprocess",
+        ":util",
+    ],
+    visibility = ["//visibility:public"],
+)
+
 # Test Utilities
 # ==============
 
@@ -426,26 +455,8 @@ cc_test(
         "//conditions:default": [],
     }),
     deps = [
-        ":clean",
-        ":clparser",
-        ":command_collector",
-        ":depfile_parser",
-        ":disk_interface",
-        ":edit_distance",
-        ":elide_middle",
-        ":explanations",
-        ":graph",
-        ":includes_normalize",
-        ":jobserver",
-        ":json",
-        ":lexer",
-        ":missing_deps",
-        ":msvc_helper",
-        ":status_printer",
-        ":string_piece_util",
-        ":subprocess",
+        ":libninja",
         ":test_util",
-        ":util",
         "@googletest//:gtest_main",
     ],
 )
@@ -533,14 +544,7 @@ cc_binary(
     name = "ninja",
     srcs = ["ninja.cc"],
     deps = [
-        ":clean",
-        ":command_collector",
-        ":getopt",
-        ":graph",
-        ":graphviz",
-        ":json",
-        ":missing_deps",
-        ":status_printer",
+        ":libninja",
         # The browse feature is not yet supported because it requires
         # running a script to generate a header file.
     ],
