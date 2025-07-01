@@ -35,3 +35,10 @@ cc_library(
     hdrs = ["getopt.h"],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "json",
+    srcs = ["json.cc"],
+    hdrs = ["json.h"],
+    visibility = ["//visibility:public"],
+)
