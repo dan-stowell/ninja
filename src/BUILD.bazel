@@ -22,6 +22,16 @@ cc_library(
     visibility = ["//visibility:public"],
 )
 
+# Header-only lexer/parser interfaces.
+cc_library(
+    name = "parser_hdr",
+    hdrs = [
+        "parser.h",
+        "lexer.h",
+    ],
+    visibility = ["//visibility:public"],
+)
+
 # Core dependency-graph implementation.
 cc_library(
     name = "graph",
@@ -46,6 +56,7 @@ cc_library(
         ":metrics",
         ":hash_map",
         ":load_status",
+        ":parser_hdr",
         ":debug_flags_hdr",
     ],
     visibility = ["//visibility:public"],
