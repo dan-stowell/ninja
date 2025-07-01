@@ -8,3 +8,9 @@ bazel_dep(
     name = "rules_python",
     version = "0.40.0",
 )
+
+# GoogleTest for C++ tests
+bazel_dep(
+    name = "com_google_googletest",
+    version = "1.14.0",
+)
