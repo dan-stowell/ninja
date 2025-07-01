@@ -77,6 +77,10 @@ cc_library(
     name = "util",
     srcs = ["util.cc"],
     hdrs = ["util.h"],
+    deps = [
+        ":edit_distance",
+        ":string_piece_util",
+    ],
     visibility = ["//visibility:public"],
     copts = ["-std=c++11"],
 )
