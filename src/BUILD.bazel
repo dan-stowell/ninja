@@ -17,5 +17,5 @@ cc_library(
 cc_test(
     name = "elide_middle_test",
     srcs = ["elide_middle_test.cc"],
-    deps = [":elide_middle"],
+    deps = [":elide_middle", ":test_support"],
 )
