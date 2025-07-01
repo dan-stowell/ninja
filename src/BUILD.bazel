@@ -60,6 +60,13 @@ cc_library(
     visibility = ["//visibility:public"],
 )
 
+# Header-only disk interface definition.
+cc_library(
+    name = "disk_interface_hdr",
+    hdrs = ["disk_interface.h"],
+    visibility = ["//visibility:public"],
+)
+
 # Core dependency-graph implementation.
 cc_library(
     name = "graph",
