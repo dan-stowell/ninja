@@ -6,3 +6,16 @@ py_binary(
     main = "browse.py",
     deps = ["//misc:ninja_syntax"],
 )
+
+cc_library(
+    name = "elide_middle",
+    srcs = ["elide_middle.cc"],
+    hdrs = ["elide_middle.h"],
+    visibility = ["//visibility:public"],
+)
+
+cc_test(
+    name = "elide_middle_test",
+    srcs = ["elide_middle_test.cc"],
+    deps = [":elide_middle"],
+)
