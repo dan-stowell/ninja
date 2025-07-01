@@ -8,6 +8,25 @@ cc_library(
 )
 
 # ---------------------------------------------------------------------------
+# Dependency file log (.ninja_deps) handling.
+cc_library(
+    name = "deps_log",
+    srcs = ["deps_log.cc"],
+    hdrs = ["deps_log.h"],
+    deps = [
+        ":graph",
+        ":util",
+        ":metrics",
+        ":hash_map",
+        ":load_status",
+        ":timestamp_hdr",
+        ":disk_interface_hdr",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
+
+# ---------------------------------------------------------------------------
 # Ninja file parser built on top of the lexer.
 cc_library(
     name = "parser",
