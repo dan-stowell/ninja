@@ -7,11 +7,19 @@ cc_library(
     copts = ["-std=c++11"],
 )
 
+# Header-only StringPiece slice type.
+cc_library(
+    name = "string_piece",
+    hdrs = ["string_piece.h"],
+    visibility = ["//visibility:public"],
+)
+
 # Independent edit_distance library.
 cc_library(
     name = "edit_distance",
     srcs = ["edit_distance.cc"],
     hdrs = ["edit_distance.h"],
+    deps = [":string_piece"],
     visibility = ["//visibility:public"],
     copts = ["-std=c++11"],
 )
