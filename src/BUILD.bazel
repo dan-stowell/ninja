@@ -147,3 +147,66 @@ cc_library(
     deps = [":util"],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "disk_interface",
+    srcs = ["disk_interface.cc"],
+    hdrs = ["disk_interface.h"],
+    deps = [
+        ":metrics",
+        ":timestamp",
+        ":util",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "jobserver",
+    srcs = ["jobserver.cc"] + select({
+        "@bazel_tools//src/conditions:windows": ["jobserver-win32.cc"],
+        "//conditions:default": ["jobserver-posix.cc"],
+    }),
+    hdrs = ["jobserver.h"],
+    deps = [
+        ":string_piece",
+        ":util",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "subprocess",
+    srcs = select({
+        "@bazel_tools//src/conditions:windows": ["subprocess-win32.cc"],
+        "//conditions:default": ["subprocess-posix.cc"],
+    }),
+    hdrs = ["subprocess.h"],
+    deps = [
+        ":exit_status",
+        ":util",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "depfile_parser",
+    srcs = ["depfile_parser.cc"],
+    hdrs = ["depfile_parser.h"],
+    deps = [
+        ":string_piece",
+        ":util",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "lexer",
+    srcs = ["lexer.cc"],
+    hdrs = ["lexer.h"],
+    deps = [
+        ":eval_env",
+        ":string_piece",
+        ":util",
+    ],
+    visibility = ["//visibility:public"],
+)
