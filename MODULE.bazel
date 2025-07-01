@@ -1,0 +1,10 @@
+module(
+    name = "ninja",
+    version = "0.1",
+)
+
+# Python rules for building browse.py
+bazel_dep(
+    name = "rules_python",
+    version = "0.19.0",
+)
