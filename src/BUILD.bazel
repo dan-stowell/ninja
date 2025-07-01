@@ -239,6 +239,7 @@ cc_library(
         ":depfile_parser",
         ":util",
         ":metrics",
+        ":version",
     ],
     visibility = ["//visibility:public"],
     copts = ["-std=c++11"],
