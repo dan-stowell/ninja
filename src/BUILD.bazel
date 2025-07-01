@@ -388,8 +388,10 @@ genrule(
 cc_library(
     name = "browse",
     srcs = ["browse.cc"],
-    hdrs = ["browse.h"],
-    deps = [":browse_py_h"],
+    hdrs = [
+        "browse.h",
+        ":browse_py_h",
+    ],
     visibility = ["//visibility:public"],
 )
 
