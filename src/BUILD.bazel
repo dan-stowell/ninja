@@ -13,3 +13,11 @@ cc_library(
     deps = [":string_piece"],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "edit_distance",
+    srcs = ["edit_distance.cc"],
+    hdrs = ["edit_distance.h"],
+    deps = [":string_piece"],
+    visibility = ["//visibility:public"],
+)
