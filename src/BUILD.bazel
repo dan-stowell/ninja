@@ -228,6 +228,39 @@ cc_library(
 )
 
 # ---------------------------------------------------------------------------
+# Parser for .ninja.dyndep files.
+cc_library(
+    name = "dyndep_parser",
+    srcs = ["dyndep_parser.cc"],
+    hdrs = ["dyndep_parser.h"],
+    deps = [
+        ":state",
+        ":parser",
+        ":depfile_parser",
+        ":util",
+        ":metrics",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
+
+# ---------------------------------------------------------------------------
+# Applies dynamic-dependency information to the build graph.
+cc_library(
+    name = "dyndep",
+    srcs = ["dyndep.cc"],
+    hdrs = ["dyndep.h"],
+    deps = [
+        ":dyndep_parser",
+        ":state",
+        ":util",
+        ":metrics",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
+
+# ---------------------------------------------------------------------------
 # Debug-flags implementation (depends on graph).
 cc_library(
     name = "debug_flags",
