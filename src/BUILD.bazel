@@ -18,11 +18,11 @@ cc_library(
 cc_library(
     name = "test_support",
     hdrs = ["test.h"],
-    deps = [],
+    deps = ["@com_github_google_googletest//:gtest"],
 )
 
 cc_test(
     name = "elide_middle_test",
     srcs = ["elide_middle_test.cc"],
-    deps = [":elide_middle", ":test_support"],
+    deps = [":elide_middle", ":test_support", "@com_github_google_googletest//:gtest_main"],
 )
