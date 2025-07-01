@@ -37,6 +37,7 @@ cc_library(
     deps = [
         ":util",
         ":metrics",
+        ":hash_map",
         ":debug_flags_hdr",
     ],
     visibility = ["//visibility:public"],
@@ -49,6 +50,7 @@ cc_library(
     srcs = ["debug_flags.cc"],
     deps = [
         ":graph",
+        ":util",
         ":debug_flags_hdr",
     ],
     visibility = ["//visibility:public"],
