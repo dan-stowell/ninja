@@ -545,7 +545,5 @@ cc_binary(
     srcs = ["ninja.cc"],
     deps = [
         ":libninja",
-        # The browse feature is not yet supported because it requires
-        # running a script to generate a header file.
     ],
 )
