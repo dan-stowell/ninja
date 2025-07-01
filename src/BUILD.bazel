@@ -376,9 +376,28 @@ cc_library(
     visibility = ["//visibility:public"],
 )
 
+genrule(
+    name = "browse_py_h_gen",
+    srcs = [
+        "browse.py",
+        "inline.sh",
+    ],
+    outs = ["build/browse_py.h"],
+    cmd = "mkdir -p $(@D) && $(location inline.sh) kBrowsePy < $(location browse.py) > $@",
+)
+
+cc_library(
+    name = "browse",
+    srcs = ["browse.cc"],
+    hdrs = ["browse.h"],
+    deps = [":browse_py_h_gen"],
+    visibility = ["//visibility:public"],
+)
+
 cc_library(
     name = "libninja",
     deps = [
+        ":browse",
         ":clean",
         ":clparser",
         ":command_collector",
@@ -543,6 +562,7 @@ filegroup(
 cc_binary(
     name = "ninja",
     srcs = ["ninja.cc"],
+    copts = ["-DNINJA_HAVE_BROWSE"],
     deps = [
         ":libninja",
     ],
