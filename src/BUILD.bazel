@@ -439,6 +439,7 @@ cc_test(
         ":graph",
         ":missing_deps",
         ":status_printer",
+        ":subprocess",
         ":test_util",
         "@googletest//:gtest_main",
     ],
