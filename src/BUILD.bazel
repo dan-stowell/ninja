@@ -32,3 +32,32 @@ cc_library(
     visibility = ["//visibility:public"],
     copts = ["-std=c++11"],
 )
+
+# Third-party rapidhash header-only library.
+cc_library(
+    name = "rapidhash",
+    hdrs = glob(["third_party/rapidhash/**/*.h"]),
+    includes = ["third_party/rapidhash"],
+    visibility = ["//visibility:public"],
+)
+
+# Third-party emhash header-only library.
+cc_library(
+    name = "emhash",
+    hdrs = glob(["third_party/emhash/**/*.hpp"]),
+    includes = ["third_party/emhash"],
+    visibility = ["//visibility:public"],
+)
+
+# Hash-map utilities that wrap emhash with StringPiece hashing.
+cc_library(
+    name = "hash_map",
+    hdrs = ["hash_map.h"],
+    deps = [
+        ":string_piece",
+        ":rapidhash",
+        ":emhash",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
