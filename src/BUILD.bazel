@@ -38,9 +38,16 @@ cc_library(
 
 # Parser library to expose parser.h.
 cc_library(
+    name = "string_piece",
+    hdrs = ["string_piece.h"],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
     name = "parser",
     srcs = ["parser.cc"],
     hdrs = ["parser.h", "lexer.h"],
+    deps = [":string_piece"],
     visibility = ["//visibility:public"],
 )
 
