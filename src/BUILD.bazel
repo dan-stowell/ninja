@@ -28,3 +28,10 @@ cc_library(
     hdrs = ["elide_middle.h"],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "getopt",
+    srcs = ["getopt.c"],
+    hdrs = ["getopt.h"],
+    visibility = ["//visibility:public"],
+)
