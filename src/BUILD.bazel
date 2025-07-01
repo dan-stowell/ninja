@@ -69,3 +69,11 @@ cc_library(
     hdrs = ["explanations.h"],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "eval_env",
+    srcs = ["eval_env.cc"],
+    hdrs = ["eval_env.h"],
+    deps = [":string_piece"],
+    visibility = ["//visibility:public"],
+)
