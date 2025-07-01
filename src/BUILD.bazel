@@ -77,3 +77,34 @@ cc_library(
     deps = [":string_piece"],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "status",
+    hdrs = ["status.h"],
+    deps = [":exit_status"],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "util",
+    srcs = ["util.cc"],
+    hdrs = ["util.h"],
+    deps = [
+        ":edit_distance",
+        ":string_piece_util",
+        ":timestamp",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "rapidhash",
+    hdrs = ["third_party/rapidhash/rapidhash.h"],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "emhash",
+    hdrs = ["third_party/emhash/hash_table8.hpp"],
+    visibility = ["//visibility:public"],
+)
