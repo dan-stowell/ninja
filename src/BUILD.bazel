@@ -284,6 +284,7 @@ cc_library(
         "dyndep_parser.cc",
         "graph.cc",
         "manifest_parser.cc",
+        "real_command_runner.cc",
         "state.cc",
     ],
     hdrs = [
@@ -311,6 +312,7 @@ cc_library(
         ":metrics",
         ":parser",
         ":status",
+        ":subprocess",
         ":timestamp",
         ":util",
         ":version",
@@ -351,16 +353,6 @@ cc_library(
     visibility = ["//visibility:public"],
 )
 
-cc_library(
-    name = "real_command_runner",
-    srcs = ["real_command_runner.cc"],
-    deps = [
-        ":graph",
-        ":jobserver",
-        ":subprocess",
-    ],
-    visibility = ["//visibility:public"],
-)
 
 cc_library(
     name = "status_printer",
@@ -449,7 +441,6 @@ cc_test(
         ":lexer",
         ":missing_deps",
         ":msvc_helper",
-        ":real_command_runner",
         ":status_printer",
         ":string_piece_util",
         ":subprocess",
@@ -518,5 +509,39 @@ cc_binary(
         ":disk_interface",
         ":getopt",
         ":graph",
+    ],
+)
+
+filegroup(
+    name = "perftests",
+    srcs = [
+        ":build_log_perftest",
+        ":canon_perftest",
+        ":clparser_perftest",
+        ":depfile_parser_perftest",
+        ":elide_middle_perftest",
+        ":hash_collision_bench",
+        ":manifest_parser_perftest",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+# Main Executable
+# ===============
+
+cc_binary(
+    name = "ninja",
+    srcs = ["ninja.cc"],
+    deps = [
+        ":clean",
+        ":command_collector",
+        ":getopt",
+        ":graph",
+        ":graphviz",
+        ":json",
+        ":missing_deps",
+        ":status_printer",
+        # The browse feature is not yet supported because it requires
+        # running a script to generate a header file.
     ],
 )
