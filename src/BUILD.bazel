@@ -435,6 +435,7 @@ cc_test(
     }),
     deps = [
         ":clean",
+        ":command_collector",
         ":graph",
         ":missing_deps",
         ":status_printer",
