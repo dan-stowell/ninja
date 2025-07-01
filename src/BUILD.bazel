@@ -329,3 +329,57 @@ cc_library(
     ],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "graphviz",
+    srcs = ["graphviz.cc"],
+    hdrs = ["graphviz.h"],
+    deps = [":graph"],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "missing_deps",
+    srcs = ["missing_deps.cc"],
+    hdrs = ["missing_deps.h"],
+    deps = [
+        ":depfile_parser",
+        ":disk_interface",
+        ":graph",
+        ":util",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "real_command_runner",
+    srcs = ["real_command_runner.cc"],
+    deps = [
+        ":graph",
+        ":jobserver",
+        ":subprocess",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "status_printer",
+    srcs = ["status_printer.cc"],
+    hdrs = ["status_printer.h"],
+    deps = [
+        ":exit_status",
+        ":explanations",
+        ":graph",
+        ":line_printer",
+        ":status",
+        ":timestamp",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "command_collector",
+    hdrs = ["command_collector.h"],
+    deps = [":graph"],
+    visibility = ["//visibility:public"],
+)
