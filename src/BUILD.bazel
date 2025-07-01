@@ -14,6 +14,14 @@ cc_library(
     visibility = ["//visibility:public"],
 )
 
+# Disk interface library for tests.
+cc_library(
+    name = "disk_interface",
+    srcs = ["disk_interface.cc"],
+    hdrs = ["disk_interface.h"],
+    visibility = ["//visibility:public"],
+)
+
 # Test support library for C++ tests.
 cc_library(
     name = "test_support",
@@ -24,5 +32,5 @@ cc_library(
 cc_test(
     name = "elide_middle_test",
     srcs = ["elide_middle_test.cc"],
-    deps = [":elide_middle", ":test_support", "@googletest//:gtest_main"],
+    deps = [":elide_middle", ":test_support", ":disk_interface", "@googletest//:gtest_main"],
 )
