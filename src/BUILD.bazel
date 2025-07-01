@@ -18,6 +18,8 @@ cc_library(
         ":metrics",
         ":disk_interface_hdr",
         ":util",
+        ":eval_env",
+        ":depfile_parser",
         ":parser_hdr",
     ],
     visibility = ["//visibility:public"],
