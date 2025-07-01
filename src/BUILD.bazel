@@ -221,6 +221,7 @@ cc_library(
         ":hash_map",
         ":load_status",
         ":debug_flags_hdr",
+        ":version",
     ],
     visibility = ["//visibility:public"],
     copts = ["-std=c++11"],
