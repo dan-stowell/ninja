@@ -251,3 +251,24 @@ cc_library(
     ],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "msvc_helper",
+    srcs = select({
+        "@bazel_tools//src/conditions:windows": ["msvc_helper-win32.cc"],
+        "//conditions:default": [],
+    }),
+    hdrs = ["msvc_helper.h"],
+    deps = [":util"],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "minidump",
+    srcs = select({
+        "@bazel_tools//src/conditions:windows": ["minidump-win32.cc"],
+        "//conditions:default": [],
+    }),
+    deps = [":util"],
+    visibility = ["//visibility:public"],
+)
