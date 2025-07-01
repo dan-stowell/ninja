@@ -383,3 +383,124 @@ cc_library(
     deps = [":graph"],
     visibility = ["//visibility:public"],
 )
+
+# Test Utilities
+# ==============
+
+cc_library(
+    name = "test_util",
+    srcs = ["test.cc"],
+    hdrs = ["test.h"],
+    deps = [
+        ":disk_interface",
+        ":graph",
+        "@googletest//:gtest",
+    ],
+)
+
+# Test Suite
+# ==========
+
+cc_test(
+    name = "ninja_test",
+    srcs = [
+        "build_log_test.cc",
+        "build_test.cc",
+        "clean_test.cc",
+        "clparser_test.cc",
+        "depfile_parser_test.cc",
+        "deps_log_test.cc",
+        "disk_interface_test.cc",
+        "dyndep_parser_test.cc",
+        "edit_distance_test.cc",
+        "elide_middle_test.cc",
+        "explanations_test.cc",
+        "graph_test.cc",
+        "jobserver_test.cc",
+        "json_test.cc",
+        "lexer_test.cc",
+        "manifest_parser_test.cc",
+        "missing_deps_test.cc",
+        "ninja_test.cc",
+        "state_test.cc",
+        "string_piece_util_test.cc",
+        "subprocess_test.cc",
+        "util_test.cc",
+    ] + select({
+        "@bazel_tools//src/conditions:windows": [
+            "includes_normalize_test.cc",
+            "msvc_helper_test.cc",
+        ],
+        "//conditions:default": [],
+    }),
+    deps = [
+        ":clean",
+        ":graph",
+        ":missing_deps",
+        ":status_printer",
+        ":test_util",
+        "@googletest//:gtest_main",
+    ],
+)
+
+# Performance Tests
+# =================
+
+cc_binary(
+    name = "build_log_perftest",
+    srcs = ["build_log_perftest.cc"],
+    deps = [":graph"],
+)
+
+cc_binary(
+    name = "canon_perftest",
+    srcs = ["canon_perftest.cc"],
+    deps = [
+        ":metrics",
+        ":util",
+    ],
+)
+
+cc_binary(
+    name = "clparser_perftest",
+    srcs = ["clparser_perftest.cc"],
+    deps = [
+        ":clparser",
+        ":metrics",
+    ],
+)
+
+cc_binary(
+    name = "depfile_parser_perftest",
+    srcs = ["depfile_parser_perftest.cc"],
+    deps = [
+        ":depfile_parser",
+        ":metrics",
+        ":util",
+    ],
+)
+
+cc_binary(
+    name = "elide_middle_perftest",
+    srcs = ["elide_middle_perftest.cc"],
+    deps = [
+        ":elide_middle",
+        ":metrics",
+    ],
+)
+
+cc_binary(
+    name = "hash_collision_bench",
+    srcs = ["hash_collision_bench.cc"],
+    deps = [":graph"],
+)
+
+cc_binary(
+    name = "manifest_parser_perftest",
+    srcs = ["manifest_parser_perftest.cc"],
+    deps = [
+        ":disk_interface",
+        ":getopt",
+        ":graph",
+    ],
+)
