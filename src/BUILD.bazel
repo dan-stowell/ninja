@@ -69,6 +69,13 @@ cc_library(
     visibility = ["//visibility:public"],
 )
 
+# Header-only exit-status enum.
+cc_library(
+    name = "exit_status_hdr",
+    hdrs = ["exit_status.h"],
+    visibility = ["//visibility:public"],
+)
+
 # Header-only lexer/parser interfaces.
 cc_library(
     name = "parser_hdr",
@@ -257,6 +264,7 @@ cc_library(
         ":load_status",
         ":timestamp_hdr",
         ":disk_interface_hdr",
+        ":exit_status_hdr",
     ],
     visibility = ["//visibility:public"],
     copts = ["-std=c++11"],
