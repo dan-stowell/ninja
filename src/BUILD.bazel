@@ -108,3 +108,42 @@ cc_library(
     hdrs = ["third_party/emhash/hash_table8.hpp"],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "hash_map",
+    hdrs = ["hash_map.h"],
+    deps = [
+        ":emhash",
+        ":rapidhash",
+        ":string_piece",
+        ":util",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "metrics",
+    srcs = ["metrics.cc"],
+    hdrs = ["metrics.h"],
+    deps = [":util"],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "line_printer",
+    srcs = ["line_printer.cc"],
+    hdrs = ["line_printer.h"],
+    deps = [
+        ":elide_middle",
+        ":util",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "version",
+    srcs = ["version.cc"],
+    hdrs = ["version.h"],
+    deps = [":util"],
+    visibility = ["//visibility:public"],
+)
