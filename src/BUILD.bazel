@@ -15,6 +15,7 @@ cc_library(
     hdrs = ["line_printer.h"],
     deps = [
         ":util",
+        ":elide_middle",
     ],
     visibility = ["//visibility:public"],
     copts = ["-std=c++11"],
