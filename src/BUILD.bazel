@@ -7,6 +7,15 @@ cc_library(
     copts = ["-std=c++11"],
 )
 
+# JSON parsing helpers.
+cc_library(
+    name = "json",
+    srcs = ["json.cc"],
+    hdrs = ["json.h"],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
+
 # Header-only StringPiece slice type.
 cc_library(
     name = "string_piece",
