@@ -163,3 +163,17 @@ cc_library(
     visibility = ["//visibility:public"],
     copts = ["-std=c++11"],
 )
+
+# ---------------------------------------------------------------------------
+# GNU make-style depfile (.d) parser.
+cc_library(
+    name = "depfile_parser",
+    srcs = ["depfile_parser.cc"],
+    hdrs = ["depfile_parser.h"],
+    deps = [
+        ":util",
+        ":string_piece",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
