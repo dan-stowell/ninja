@@ -7,6 +7,19 @@ cc_library(
     copts = ["-std=c++11"],
 )
 
+# Environment variable evaluation utilities.
+cc_library(
+    name = "eval_env",
+    srcs = ["eval_env.cc"],
+    hdrs = ["eval_env.h"],
+    deps = [
+        ":string_piece",
+        ":util",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
+
 # ---------------------------------------------------------------------------
 # re2c-generated lexer used by the Ninja parser.
 cc_library(
@@ -16,6 +29,7 @@ cc_library(
     deps = [
         ":util",
         ":string_piece",
+        ":eval_env",
     ],
     visibility = ["//visibility:public"],
     copts = ["-std=c++11"],
