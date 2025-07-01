@@ -449,6 +449,7 @@ cc_test(
         ":lexer",
         ":missing_deps",
         ":msvc_helper",
+        ":real_command_runner",
         ":status_printer",
         ":string_piece_util",
         ":subprocess",
