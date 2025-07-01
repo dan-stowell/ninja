@@ -7,6 +7,54 @@ cc_library(
     copts = ["-std=c++11"],
 )
 
+# ---------------------------------------------------------------------------
+# Debug-flags header (header-only, used by graph and others).
+cc_library(
+    name = "debug_flags_hdr",
+    hdrs = ["debug_flags.h"],
+    visibility = ["//visibility:public"],
+)
+
+# Core dependency-graph implementation.
+cc_library(
+    name = "graph",
+    srcs = ["graph.cc"],
+    hdrs = [
+        "graph.h",
+        # headers directly included by graph.cc / graph.h
+        "build_log.h",
+        "depfile_parser.h",
+        "deps_log.h",
+        "disk_interface.h",
+        "manifest_parser.h",
+        "state.h",
+        "dyndep.h",
+        "eval_env.h",
+        "explanations.h",
+        "jobserver.h",
+        "timestamp.h",
+    ],
+    deps = [
+        ":util",
+        ":metrics",
+        ":debug_flags_hdr",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
+
+# Debug-flags implementation (depends on graph).
+cc_library(
+    name = "debug_flags",
+    srcs = ["debug_flags.cc"],
+    deps = [
+        ":graph",
+        ":debug_flags_hdr",
+    ],
+    visibility = ["//visibility:public"],
+    copts = ["-std=c++11"],
+)
+
 # JSON parsing helpers.
 cc_library(
     name = "json",
