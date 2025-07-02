@@ -393,6 +393,7 @@ cc_library(
         ":browse_py_h",
     ],
     copts = ["-I$(GENDIR)/src"],
+    defines = ["NINJA_PYTHON=\\\"python\\\""],
     visibility = ["//visibility:public"],
 )
 
