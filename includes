@@ -1,0 +1,911 @@
+---
+file ./edit_distance.h
+#include "string_piece.h"
+---
+file ./graphviz.h
+#include <set>
+#include "dyndep.h"
+#include "graph.h"
+---
+file ./manifest_parser.h
+#include "parser.h"
+#include <memory>
+#include <vector>
+---
+file ./version.h
+#include <string>
+---
+file ./status.h
+#include <string>
+#include "exit_status.h"
+---
+file ./build_log.h
+#include <stdio.h>
+#include <memory>
+#include <string>
+#include "hash_map.h"
+#include "load_status.h"
+#include "timestamp.h"
+#include "util.h"  // uint64_t
+---
+file ./hash_map.h
+#include <algorithm>
+#include <string.h>
+#include "string_piece.h"
+#include "util.h"
+#include "third_party/emhash/hash_table8.hpp"
+#include "third_party/rapidhash/rapidhash.h"
+---
+file ./dyndep_parser.h
+#include "eval_env.h"
+#include "parser.h"
+---
+file ./includes_normalize.h
+#include <string>
+#include <vector>
+---
+file ./clean.h
+#include <set>
+#include <string>
+#include "build.h"
+#include "dyndep.h"
+#include "build_log.h"
+---
+file ./dyndep.h
+#include <map>
+#include <string>
+#include <vector>
+#include "explanations.h"
+---
+file ./exit_status.h
+---
+file ./build.h
+#include <cstdio>
+#include <map>
+#include <memory>
+#include <string>
+#include <vector>
+#include "depfile_parser.h"
+#include "exit_status.h"
+#include "graph.h"
+#include "jobserver.h"
+#include "util.h"  // int64_t
+---
+file ./parser.h
+#include <string>
+#include "lexer.h"
+---
+file ./clparser.h
+#include <set>
+#include <string>
+---
+file ./command_collector.h
+#include <cassert>
+#include <unordered_set>
+#include <vector>
+#include "graph.h"
+---
+file ./depfile_parser.h
+#include <string>
+#include <vector>
+#include "string_piece.h"
+---
+file ./elide_middle.h
+#include <cstddef>
+#include <string>
+---
+file ./test.h
+#include <gtest/gtest.h>
+#include "disk_interface.h"
+#include "manifest_parser.h"
+#include "state.h"
+---
+file ./missing_deps.h
+#include <map>
+#include <set>
+#include <string>
+#include <unordered_map>
+---
+file ./string_piece.h
+#include <string>
+#include <string.h>
+---
+file ./eval_env.h
+#include <map>
+#include <memory>
+#include <string>
+#include <vector>
+#include "string_piece.h"
+---
+file ./graph.h
+#include <algorithm>
+#include <queue>
+#include <set>
+#include <string>
+#include <vector>
+#include "dyndep.h"
+#include "eval_env.h"
+#include "explanations.h"
+#include "jobserver.h"
+#include "timestamp.h"
+#include "util.h"
+---
+file ./status_printer.h
+#include <cstdint>
+#include <queue>
+#include "exit_status.h"
+#include "explanations.h"
+#include "line_printer.h"
+#include "status.h"
+---
+file ./getopt.h
+---
+file ./msvc_helper.h
+#include <string>
+---
+file ./deps_log.h
+#include <string>
+#include <vector>
+#include <stdio.h>
+#include "load_status.h"
+#include "timestamp.h"
+---
+file ./third_party/rapidhash/rapidhash.h
+#include <stdint.h>
+#include <string.h>
+---
+file ./third_party/emhash/hash_table8.hpp
+#include <cstring>
+#include <string>
+#include <cstdlib>
+#include <type_traits>
+#include <cassert>
+#include <utility>
+#include <cstdint>
+#include <functional>
+#include <iterator>
+#include <algorithm>
+#include <memory>
+#include <xmmintrin.h>
+---
+file ./string_piece_util.h
+#include <string>
+#include <vector>
+#include "string_piece.h"
+---
+file ./json.h
+#include <string>
+---
+file ./load_status.h
+---
+file ./util.h
+#include "win32port.h"
+#include <stdint.h>
+#include <stdarg.h>
+#include <string>
+#include <vector>
+---
+file ./lexer.h
+#include "string_piece.h"
+---
+file ./disk_interface.h
+#include <map>
+#include <string>
+#include "timestamp.h"
+---
+file ./metrics.h
+#include <string>
+#include <vector>
+#include "util.h"  // For int64_t.
+---
+file ./browse.h
+---
+file ./explanations.h
+#include <stdarg.h>
+#include <stdio.h>
+#include <string>
+#include <unordered_map>
+#include <vector>
+---
+file ./jobserver.h
+#include <stdint.h>
+#include <memory>
+#include <string>
+#include <utility>
+---
+file ./state.h
+#include <map>
+#include <set>
+#include <string>
+#include <vector>
+#include "eval_env.h"
+#include "graph.h"
+#include "hash_map.h"
+#include "util.h"
+---
+file ./subprocess.h
+#include <string>
+#include <vector>
+#include <queue>
+#include <windows.h>
+#include <signal.h>
+#include "exit_status.h"
+---
+file ./debug_flags.h
+#include <stdio.h>
+---
+file ./timestamp.h
+#include "win32port.h"
+#include <inttypes.h>
+---
+file ./line_printer.h
+#include <stddef.h>
+#include <string>
+---
+file ./win32port.h
+#include <inttypes.h>
+---
+file ./includes_normalize_test.cc
+#include "includes_normalize.h"
+#include <algorithm>
+#include <direct.h>
+#include "string_piece_util.h"
+#include "test.h"
+#include "util.h"
+---
+file ./dyndep_parser_test.cc
+#include "dyndep_parser.h"
+#include <map>
+#include <vector>
+#include "dyndep.h"
+#include "graph.h"
+#include "state.h"
+#include "test.h"
+---
+file ./status_printer.cc
+#include "status_printer.h"
+#include "win32port.h"
+#include <cinttypes>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <io.h>
+#include "build.h"
+#include "debug_flags.h"
+#include "exit_status.h"
+---
+file ./clparser_perftest.cc
+#include <stdio.h>
+#include <stdlib.h>
+#include "clparser.h"
+#include "metrics.h"
+---
+file ./dyndep.cc
+#include "dyndep.h"
+#include <assert.h>
+#include <stdio.h>
+#include "debug_flags.h"
+#include "disk_interface.h"
+#include "dyndep_parser.h"
+#include "explanations.h"
+#include "graph.h"
+#include "state.h"
+#include "util.h"
+---
+file ./ninja_test.cc
+#include <gtest/gtest.h>
+---
+file ./manifest_parser_test.cc
+#include "manifest_parser.h"
+#include <map>
+#include <vector>
+#include "graph.h"
+#include "state.h"
+#include "test.h"
+---
+file ./lexer.in.cc
+#include "lexer.h"
+#include <stdio.h>
+#include "eval_env.h"
+#include "util.h"
+---
+file ./elide_middle.cc
+#include "elide_middle.h"
+#include <assert.h>
+#include <string.h>
+---
+file ./depfile_parser.cc
+#include "depfile_parser.h"
+#include "util.h"
+#include <algorithm>
+---
+file ./state.cc
+#include "state.h"
+#include <assert.h>
+#include <stdio.h>
+#include "edit_distance.h"
+#include "graph.h"
+#include "util.h"
+---
+file ./explanations_test.cc
+#include "explanations.h"
+#include "test.h"
+---
+file ./elide_middle_perftest.cc
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <vector>
+#include "elide_middle.h"
+#include "metrics.h"
+---
+file ./dyndep_parser.cc
+#include "dyndep_parser.h"
+#include <vector>
+#include "dyndep.h"
+#include "graph.h"
+#include "state.h"
+#include "util.h"
+#include "version.h"
+---
+file ./json.cc
+#include "json.h"
+#include <cstdio>
+#include <string>
+---
+file ./clean_test.cc
+#include "clean.h"
+#include "build.h"
+#include "util.h"
+#include "test.h"
+#include <unistd.h>
+---
+file ./msvc_helper_test.cc
+#include "msvc_helper.h"
+#include "test.h"
+#include "util.h"
+---
+file ./disk_interface_test.cc
+#include <assert.h>
+#include <stdio.h>
+#include <io.h>
+#include <windows.h>
+#include <direct.h>
+#include "disk_interface.h"
+#include "graph.h"
+#include "test.h"
+---
+file ./build_log.cc
+#include "build_log.h"
+#include "disk_interface.h"
+#include <cassert>
+#include <errno.h>
+#include <stdlib.h>
+#include <string.h>
+#include <inttypes.h>
+#include <unistd.h>
+#include "build.h"
+#include "graph.h"
+#include "metrics.h"
+#include "util.h"
+---
+file ./graph_test.cc
+#include "graph.h"
+#include "build.h"
+#include "command_collector.h"
+#include "test.h"
+---
+file ./state_test.cc
+#include "graph.h"
+#include "state.h"
+#include "test.h"
+---
+file ./parser.cc
+#include "parser.h"
+#include "disk_interface.h"
+#include "metrics.h"
+---
+file ./msvc_helper_main-win32.cc
+#include "msvc_helper.h"
+#include <fcntl.h>
+#include <io.h>
+#include <stdio.h>
+#include <windows.h>
+#include "clparser.h"
+#include "util.h"
+#include "getopt.h"
+---
+file ./manifest_parser.cc
+#include "manifest_parser.h"
+#include <assert.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <memory>
+#include <vector>
+#include "graph.h"
+#include "state.h"
+#include "util.h"
+#include "version.h"
+---
+file ./lexer.cc
+#include "lexer.h"
+#include <stdio.h>
+#include "eval_env.h"
+#include "util.h"
+---
+file ./subprocess-win32.cc
+#include "exit_status.h"
+#include "subprocess.h"
+#include <assert.h>
+#include <stdio.h>
+#include <algorithm>
+#include "util.h"
+---
+file ./build_log_perftest.cc
+#include <stdio.h>
+#include <stdlib.h>
+#include "build_log.h"
+#include "graph.h"
+#include "manifest_parser.h"
+#include "state.h"
+#include "util.h"
+#include "metrics.h"
+#include <unistd.h>
+---
+file ./json_test.cc
+#include "json.h"
+#include "test.h"
+---
+file ./manifest_parser_perftest.cc
+#include <numeric>
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "getopt.h"
+#include <direct.h>
+#include "getopt.h"
+#include <unistd.h>
+#include <getopt.h>
+#include <unistd.h>
+#include "disk_interface.h"
+#include "graph.h"
+#include "manifest_parser.h"
+#include "metrics.h"
+#include "state.h"
+#include "util.h"
+---
+file ./jobserver-posix.cc
+#include <assert.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <string>
+#include "jobserver.h"
+#include "util.h"
+---
+file ./includes_normalize-win32.cc
+#include "includes_normalize.h"
+#include "string_piece.h"
+#include "string_piece_util.h"
+#include "util.h"
+#include <algorithm>
+#include <iterator>
+#include <sstream>
+#include <windows.h>
+---
+file ./edit_distance.cc
+#include "edit_distance.h"
+#include <algorithm>
+#include <vector>
+---
+file ./string_piece_util.cc
+#include "string_piece_util.h"
+#include <algorithm>
+#include <string>
+#include <vector>
+---
+file ./string_piece_util_test.cc
+#include "string_piece_util.h"
+#include "test.h"
+---
+file ./deps_log_test.cc
+#include "deps_log.h"
+#include <sys/stat.h>
+#include <unistd.h>
+#include "disk_interface.h"
+#include "graph.h"
+#include "util.h"
+#include "test.h"
+---
+file ./jobserver.cc
+#include "jobserver.h"
+#include <assert.h>
+#include <stdio.h>
+#include <vector>
+#include "string_piece.h"
+---
+file ./depfile_parser_test.cc
+#include "depfile_parser.h"
+#include "test.h"
+---
+file ./disk_interface.cc
+#include "disk_interface.h"
+#include <algorithm>
+#include <errno.h>
+#include <stdio.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <direct.h>  // _mkdir
+#include <windows.h>
+#include <sstream>
+#include <unistd.h>
+#include "metrics.h"
+#include "util.h"
+---
+file ./graph.cc
+#include "graph.h"
+#include <algorithm>
+#include <deque>
+#include <assert.h>
+#include <stdio.h>
+#include "build_log.h"
+#include "debug_flags.h"
+#include "depfile_parser.h"
+#include "deps_log.h"
+#include "disk_interface.h"
+#include "manifest_parser.h"
+#include "metrics.h"
+#include "state.h"
+#include "util.h"
+---
+file ./line_printer.cc
+#include "line_printer.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+#include <unistd.h>
+#include <sys/ioctl.h>
+#include <termios.h>
+#include <sys/time.h>
+#include "elide_middle.h"
+#include "util.h"
+---
+file ./missing_deps.cc
+#include "missing_deps.h"
+#include <string.h>
+#include <iostream>
+#include "depfile_parser.h"
+#include "deps_log.h"
+#include "disk_interface.h"
+#include "graph.h"
+#include "state.h"
+#include "util.h"
+---
+file ./util.cc
+#include "util.h"
+#include <windows.h>
+#include <io.h>
+#include <windows.h>
+#include <io.h>
+#include <share.h>
+#include <direct.h>
+#include <assert.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/time.h>
+#include <algorithm>
+#include <vector>
+#include <sys/sysctl.h>
+#include <unistd.h>
+#include <sys/loadavg.h>
+#include <libperfstat.h>
+#include <sys/sysinfo.h>
+#include <fstream>
+#include <map>
+#include "string_piece_util.h"
+#include <sys/cpuset.h>
+#include "edit_distance.h"
+---
+file ./clparser_test.cc
+#include "clparser.h"
+#include "test.h"
+#include "util.h"
+---
+file ./hash_collision_bench.cc
+#include "build_log.h"
+#include <algorithm>
+#include <stdlib.h>
+#include <time.h>
+---
+file ./build_log_test.cc
+#include "build_log.h"
+#include "util.h"
+#include "test.h"
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <share.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <cassert>
+---
+file ./jobserver_test.cc
+#include "jobserver.h"
+#include "test.h"
+#include <fcntl.h>
+#include <unistd.h>
+#include <windows.h>
+---
+file ./build_test.cc
+#include "build.h"
+#include <assert.h>
+#include <climits>
+#include <stdint.h>
+#include "build_log.h"
+#include "deps_log.h"
+#include "exit_status.h"
+#include "graph.h"
+#include "status_printer.h"
+#include "test.h"
+---
+file ./test.cc
+#include <direct.h>  // Has to be before util.h is included.
+#include "test.h"
+#include <algorithm>
+#include <errno.h>
+#include <stdlib.h>
+#include <windows.h>
+#include <io.h>
+#include <unistd.h>
+#include "build_log.h"
+#include "graph.h"
+#include "manifest_parser.h"
+#include "util.h"
+---
+file ./real_command_runner.cc
+#include "build.h"
+#include "jobserver.h"
+#include "limits.h"
+#include "subprocess.h"
+---
+file ./util_test.cc
+#include "util.h"
+#include "test.h"
+---
+file ./subprocess_test.cc
+#include "subprocess.h"
+#include "exit_status.h"
+#include "test.h"
+#include <stdio.h>
+#include <sys/time.h>
+#include <sys/resource.h>
+#include <unistd.h>
+---
+file ./msvc_helper-win32.cc
+#include "msvc_helper.h"
+#include <windows.h>
+#include "util.h"
+---
+file ./status_test.cc
+#include "status.h"
+#include "test.h"
+---
+file ./minidump-win32.cc
+#include <windows.h>
+#include <dbghelp.h>
+#include "util.h"
+---
+file ./metrics.cc
+#include "metrics.h"
+#include <errno.h>
+#include <stdio.h>
+#include <string.h>
+#include <algorithm>
+#include <chrono>
+#include "util.h"
+---
+file ./depfile_parser_perftest.cc
+#include <stdio.h>
+#include <stdlib.h>
+#include "depfile_parser.h"
+#include "util.h"
+#include "metrics.h"
+---
+file ./edit_distance_test.cc
+#include "edit_distance.h"
+#include "test.h"
+---
+file ./eval_env.cc
+#include <assert.h>
+#include "eval_env.h"
+---
+file ./elide_middle_test.cc
+#include "elide_middle.h"
+#include "test.h"
+---
+file ./ninja.cc
+#include <errno.h>
+#include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <algorithm>
+#include <cstdlib>
+#include <cstring>
+#include <string>
+#include "getopt.h"
+#include <direct.h>
+#include <windows.h>
+#include "getopt.h"
+#include <unistd.h>
+#include <getopt.h>
+#include <unistd.h>
+#include "browse.h"
+#include "build.h"
+#include "build_log.h"
+#include "clean.h"
+#include "command_collector.h"
+#include "debug_flags.h"
+#include "deps_log.h"
+#include "disk_interface.h"
+#include "exit_status.h"
+#include "graph.h"
+#include "graphviz.h"
+#include "jobserver.h"
+#include "json.h"
+#include "manifest_parser.h"
+#include "metrics.h"
+#include "missing_deps.h"
+#include "state.h"
+#include "status.h"
+#include "util.h"
+#include "version.h"
+---
+file ./missing_deps_test.cc
+#include <memory>
+#include "deps_log.h"
+#include "graph.h"
+#include "missing_deps.h"
+#include "state.h"
+#include "test.h"
+---
+file ./build.cc
+#include "build.h"
+#include <assert.h>
+#include <errno.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <functional>
+#include <unordered_set>
+#include <sys/termios.h>
+#include "build_log.h"
+#include "clparser.h"
+#include "debug_flags.h"
+#include "depfile_parser.h"
+#include "deps_log.h"
+#include "disk_interface.h"
+#include "exit_status.h"
+#include "explanations.h"
+#include "graph.h"
+#include "jobserver.h"
+#include "metrics.h"
+#include "state.h"
+#include "status.h"
+#include "util.h"
+---
+file ./subprocess-posix.cc
+#include "exit_status.h"
+#include "subprocess.h"
+#include <sys/select.h>
+#include <assert.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+#include <sys/wait.h>
+#include <spawn.h>
+#include <poll.h>
+#include <sys/select.h>
+#include "util.h"
+---
+file ./deps_log.cc
+#include "deps_log.h"
+#include <assert.h>
+#include <errno.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include "graph.h"
+#include "metrics.h"
+#include "state.h"
+#include "util.h"
+---
+file ./lexer_test.cc
+#include "lexer.h"
+#include "eval_env.h"
+#include "test.h"
+---
+file ./canon_perftest.cc
+#include <stdio.h>
+#include <string.h>
+#include "util.h"
+#include "metrics.h"
+---
+file ./clparser.cc
+#include "clparser.h"
+#include <algorithm>
+#include <assert.h>
+#include <string.h>
+#include "metrics.h"
+#include "string_piece_util.h"
+#include "includes_normalize.h"
+#include "string_piece.h"
+#include "util.h"
+---
+file ./browse.cc
+#include "browse.h"
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <vector>
+#include "build/browse_py.h"
+---
+file ./jobserver-win32.cc
+#include <assert.h>
+#include <windows.h>
+#include "jobserver.h"
+#include "util.h"
+---
+file ./getopt.c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "getopt.h"
+---
+file ./graphviz.cc
+#include "graphviz.h"
+#include <stdio.h>
+#include <algorithm>
+#include "dyndep.h"
+#include "graph.h"
+---
+file ./depfile_parser.in.cc
+#include "depfile_parser.h"
+#include "util.h"
+#include <algorithm>
+---
+file ./debug_flags.cc
+#include <stdio.h>
+#include <map>
+#include <vector>
+#include <string>
+#include "graph.h"
+---
+file ./version.cc
+#include "version.h"
+#include <stdlib.h>
+#include "util.h"
+---
+file ./clean.cc
+#include "clean.h"
+#include <assert.h>
+#include <stdio.h>
+#include "disk_interface.h"
+#include "graph.h"
+#include "state.h"
+#include "util.h"
