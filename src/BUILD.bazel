@@ -390,8 +390,6 @@ cc_library(
     srcs = ["browse.cc"],
     hdrs = [
         "browse.h",
-    ],
-    deps = [
         ":browse_py_h",
     ],
     visibility = ["//visibility:public"],
