@@ -392,6 +392,7 @@ cc_library(
         "browse.h",
         ":browse_py_h",
     ],
+    copts = ["-I$(GENDIR)/src"],
     visibility = ["//visibility:public"],
 )
 
