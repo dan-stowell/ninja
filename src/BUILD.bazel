@@ -380,7 +380,7 @@ genrule(
     name = "browse_py_h",
     srcs = ["browse.py"],
     tools = ["inline.sh"],
-    outs = ["build/browse_py.h"],
+    outs = ["browse_py.h"],
     cmd = "$(location inline.sh) kBrowsePy < $(location browse.py) > $@",
     visibility = ["//visibility:public"],
 )
@@ -394,7 +394,6 @@ cc_library(
     deps = [
         ":browse_py_h",
     ],
-    copts = ["-I$(GENDIR)/src"],
     visibility = ["//visibility:public"],
 )
 

@@ -20,7 +20,7 @@
 #include <unistd.h>
 #include <vector>
 
-#include "build/browse_py.h"
+#include "browse_py.h"
 
 using namespace std;
 
