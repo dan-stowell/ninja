@@ -1,0 +1,283 @@
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
+
+# Common headers library
+cc_library(
+    name = "ninja_headers",
+    hdrs = [
+        "src/build_log.h",
+        "src/build.h",
+        "src/clean.h", 
+        "src/clparser.h",
+        "src/dyndep.h",
+        "src/dyndep_parser.h",
+        "src/debug_flags.h",
+        "src/deps_log.h",
+        "src/disk_interface.h",
+        "src/edit_distance.h",
+        "src/elide_middle.h",
+        "src/eval_env.h",
+        "src/graph.h",
+        "src/graphviz.h",
+        "src/jobserver.h",
+        "src/json.h",
+        "src/line_printer.h",
+        "src/manifest_parser.h",
+        "src/metrics.h",
+        "src/missing_deps.h",
+        "src/parser.h",
+        "src/state.h",
+        "src/status_printer.h",
+        "src/string_piece_util.h",
+        "src/util.h",
+        "src/version.h",
+        "src/command_collector.h",
+        "src/exit_status.h",
+        "src/explanations.h",
+        "src/hash_map.h",
+        "src/includes_normalize.h",
+        "src/load_status.h",
+        "src/status.h",
+        "src/string_piece.h",
+        "src/subprocess.h",
+        "src/test.h",
+        "src/timestamp.h",
+        "src/win32port.h",
+        "src/depfile_parser.h",
+        "src/lexer.h",
+        "src/browse.h",
+        "src/third_party/emhash/hash_table8.hpp",
+        "src/third_party/rapidhash/rapidhash.h",
+    ] + select({
+        "@platforms//os:windows": [
+            "src/getopt.h",
+            "src/msvc_helper.h",
+        ],
+        "//conditions:default": [],
+    }),
+    includes = ["src"],
+    visibility = ["//visibility:public"],
+)
+
+# Core ninja library
+cc_library(
+    name = "libninja",
+    srcs = [
+        "src/build_log.cc",
+        "src/build.cc", 
+        "src/clean.cc",
+        "src/clparser.cc",
+        "src/dyndep.cc",
+        "src/dyndep_parser.cc",
+        "src/debug_flags.cc",
+        "src/deps_log.cc",
+        "src/disk_interface.cc",
+        "src/edit_distance.cc",
+        "src/elide_middle.cc",
+        "src/graph.cc",
+        "src/graphviz.cc",
+        "src/jobserver.cc",
+        "src/json.cc",
+        "src/line_printer.cc",
+        "src/manifest_parser.cc",
+        "src/metrics.cc",
+        "src/missing_deps.cc",
+        "src/parser.cc",
+        "src/real_command_runner.cc",
+        "src/state.cc",
+        "src/status_printer.cc",
+        "src/string_piece_util.cc",
+        "src/version.cc",
+    ] + select({
+        "@platforms//os:windows": [
+            "src/subprocess-win32.cc",
+            "src/includes_normalize-win32.cc", 
+            "src/jobserver-win32.cc",
+            "src/msvc_helper-win32.cc",
+            "src/msvc_helper_main-win32.cc",
+            "src/getopt.c",
+            "src/minidump-win32.cc",
+        ],
+        "//conditions:default": [
+            "src/jobserver-posix.cc",
+            "src/subprocess-posix.cc",
+        ],
+    }),
+    deps = [
+        ":ninja_headers",
+        ":ninja_util",
+    ],
+    includes = ["src"],
+    copts = [
+        "-std=c++14",
+        "-Wall",
+        "-Wextra",
+        "-Wno-unused-parameter",
+        "-Wno-missing-field-initializers",
+        "-Wno-deprecated",
+    ] + select({
+        "@platforms//os:windows": [
+            "/DNOMINMAX",
+            "/D_CRT_SECURE_NO_WARNINGS",
+        ],
+        "//conditions:default": [],
+    }),
+    linkopts = select({
+        "@platforms//os:windows": [],
+        "//conditions:default": ["-pthread"],
+    }),
+    visibility = ["//visibility:public"],
+)
+
+# Utility library for re2c dependencies
+cc_library(
+    name = "ninja_util",
+    srcs = [
+        "src/util.cc",
+        "src/eval_env.cc",
+    ],
+    copts = [
+        "-std=c++14",
+        "-Wno-unused-parameter",
+    ],
+    deps = [":ninja_headers"],
+    visibility = ["//visibility:public"],
+)
+
+# RE2C generated files library
+cc_library(
+    name = "libninja-re2c",
+    srcs = [
+        "src/depfile_parser.cc",
+        "src/lexer.cc",
+    ],
+    includes = ["src"],
+    copts = [
+        "-std=c++14",
+        "-Wno-unused-parameter",
+    ],
+    deps = [
+        ":ninja_headers",
+        ":ninja_util",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+# Main ninja binary
+cc_binary(
+    name = "ninja",
+    srcs = ["src/ninja.cc"],
+    deps = [
+        ":libninja",
+        ":libninja-re2c",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+# Test executable
+cc_test(
+    name = "ninja_test",
+    srcs = [
+        "src/build_log_test.cc",
+        "src/build_test.cc",
+        "src/clean_test.cc",
+        "src/clparser_test.cc",
+        "src/depfile_parser_test.cc",
+        "src/deps_log_test.cc",
+        "src/disk_interface_test.cc",
+        "src/dyndep_parser_test.cc",
+        "src/edit_distance_test.cc",
+        "src/elide_middle_test.cc",
+        "src/explanations_test.cc",
+        "src/graph_test.cc",
+        "src/jobserver_test.cc",
+        "src/json_test.cc",
+        "src/lexer_test.cc",
+        "src/manifest_parser_test.cc",
+        "src/missing_deps_test.cc",
+        "src/ninja_test.cc",
+        "src/state_test.cc",
+        "src/string_piece_util_test.cc",
+        "src/subprocess_test.cc",
+        "src/test.cc",
+        "src/util_test.cc",
+    ] + select({
+        "@platforms//os:windows": [
+            "src/includes_normalize_test.cc",
+            "src/msvc_helper_test.cc",
+        ],
+        "//conditions:default": [],
+    }),
+    copts = [
+        "-std=c++14",
+        "-Wno-unused-parameter",
+    ],
+    deps = [
+        ":libninja",
+        ":libninja-re2c",
+        "@googletest//:gtest_main",
+    ],
+)
+
+# Performance test binaries
+cc_binary(
+    name = "build_log_perftest",
+    srcs = ["src/build_log_perftest.cc"],
+    deps = [
+        ":libninja",
+        ":libninja-re2c",
+    ],
+)
+
+cc_binary(
+    name = "canon_perftest",
+    srcs = ["src/canon_perftest.cc"],
+    deps = [
+        ":libninja",
+        ":libninja-re2c",
+    ],
+)
+
+cc_binary(
+    name = "clparser_perftest",
+    srcs = ["src/clparser_perftest.cc"],
+    deps = [
+        ":libninja",
+        ":libninja-re2c",
+    ],
+)
+
+cc_binary(
+    name = "depfile_parser_perftest",
+    srcs = ["src/depfile_parser_perftest.cc"],
+    deps = [
+        ":libninja",
+        ":libninja-re2c",
+    ],
+)
+
+cc_binary(
+    name = "elide_middle_perftest",
+    srcs = ["src/elide_middle_perftest.cc"],
+    deps = [
+        ":libninja",
+        ":libninja-re2c",
+    ],
+)
+
+cc_binary(
+    name = "hash_collision_bench",
+    srcs = ["src/hash_collision_bench.cc"],
+    deps = [
+        ":libninja",
+        ":libninja-re2c",
+    ],
+)
+
+cc_binary(
+    name = "manifest_parser_perftest",
+    srcs = ["src/manifest_parser_perftest.cc"],
+    deps = [
+        ":libninja",
+        ":libninja-re2c",
+    ],
+)
